@@ -18,4 +18,4 @@ jobs:
     #- name: Run tests
     #  run: swift test -v
     - name: xcodebuild test
-      run: xcodebuild test -scheme SamplePkg2-Package -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest' -verbose
+      run: xcodebuild test -scheme SamplePkg2 -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest' -verbose
