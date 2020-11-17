@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/runner/work/SamplePkg2/SamplePkg2/Sources/SamplePkg2/SamplePkg2.swift",
+      "line": 1,
+      "symbol": "SamplePkg2",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/SamplePkg2/SamplePkg2/Sources/SamplePkg2/SamplePkg2.swift",
+      "line": 2,
+      "symbol": "SamplePkg2.text",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/runner/work/SamplePkg2/SamplePkg2"
+}
