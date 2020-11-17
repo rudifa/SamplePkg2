@@ -68,5 +68,6 @@ jobs:
       run: xcodebuild test -scheme SamplePkg2 -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest' -verbose
 ```
 
-
+### 3. branch using-uikit-2: add UIKit dependency and unit tests; merge into main
+- build succeeds and tests pass
 
