@@ -71,3 +71,80 @@ jobs:
 ### 3. branch using-uikit-2: add UIKit dependency and unit tests; merge into main
 - build succeeds and tests pass
 
+### 4. add .jazzy.yaml
+
+- this file instructs jazzy to use xcodebuild with sdk iphonesimulator
+- this enables jazzy documenting code that depends on UIKit (or other non-macosx frameworks) 
+```
+clean: true
+swift_build_tool:
+  xcodebuild
+xcodebuild_arguments:
+  - -verbose  # no effect
+  - -scheme
+  - SamplePkg2
+  - -sdk
+  - iphonesimulator
+author: Rudi Farkas
+copyright: Copyright © 2019 Rudi Farkas. All rights reserved.
+min_acl: internal
+```
+
+### 5. add build_jazzy_docs.yml
+
+- this builds the jazzy docs and publishes them via gh-pages:
+[SamplePkg2](https://rudifa.github.io/SamplePkg2/docs/)
+
+```
+name: build_jazzy_docs
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+    branches: [ master ]
+    
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: echo $GITHUB_SHA
+      run: echo $GITHUB_SHA
+
+    - name: git fetch --all
+      run: git fetch --all
+
+    - name: git log -1 --oneline 
+      run: git log -1 --oneline
+
+    - name: git checkout gh-pages
+      run: git checkout gh-pages
+
+    - name: git reset --hard $GITHUB_SHA
+      run: git reset --hard $GITHUB_SHA
+
+    - name: install jazzy
+      run: gem install jazzy --no-document
+
+    - name: build jazzy docs on gh-pages
+      run: jazzy
+
+    - name: git add .
+      run: git add .
+
+    - name: git commit -m "update jazzy docs"
+      run: git commit -m "update jazzy docs"
+
+    - name: git push --force
+      run: git push --force
+ 
+    - name: git checkout main
+      run: git checkout main
+```
+
