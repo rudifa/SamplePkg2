@@ -13,7 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+    #- name: Build
+    #  run: swift build -v
+    #- name: Run tests
+    #  run: swift test -v
+    - name: xcodebuild test
+      run: xcodebuild test -scheme SamplePkg2-Package -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest' -verbose
