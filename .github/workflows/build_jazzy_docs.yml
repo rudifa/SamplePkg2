@@ -46,5 +46,5 @@ jobs:
     - name: git push --force
       run: git push --force
  
-    - name: git checkout master
-      run: git checkout master
+    - name: git checkout main
+      run: git checkout main
